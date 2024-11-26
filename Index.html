@@ -68,7 +68,7 @@
 
 <!-- Layar Awal -->
 <div id="start-screen">
-  <h1>Buka ini olip</h1>
+  <h1>play musik nya lilip</h1>
   <button id="start-button">Lanjutkan</button>
 </div>
 
@@ -182,7 +182,11 @@
 </div>
 
 <!-- Musik -->
-<audio id="background-audio" src="lagu.mp3" loop></audio>
+<audio id="background-music" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    
 
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js'></script>
@@ -191,31 +195,13 @@
     
 
 <script>
-  // Tombol "Lanjutkan"
-  const startButton = document.getElementById("start-button");
-  const audio = document.getElementById("background-audio");
+  const startButton = document.getElementById('start-button');
+  const backgroundMusic = document.getElementById('background-music');
 
-  startButton.addEventListener("click", () => {
-    // Mulai lagu
-    audio.play();
-    
-    // Sembunyikan layar awal
-    document.getElementById("start-screen").style.display = "none";
-
-    // Tampilkan konten utama (jika ada)
-    // document.getElementById("main-content").style.display = "block"; 
-  });
-
-  // Periksa jika lagu tidak berjalan
-  audio.addEventListener("play", () => {
-    console.log("Audio is playing");
-  });
-
-  audio.addEventListener("error", (e) => {
-    console.error("Error playing audio", e);
+  startButton.addEventListener('click', () => {
+    backgroundMusic.play();
   });
 </script>
-
 
 </body>
 </html>
