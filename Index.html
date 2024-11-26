@@ -182,7 +182,8 @@
 </div>
 
 <!-- Musik -->
-<audio id="background-music" src="lagu.mp3" preload="auto"></audio>
+<audio id="background-audio" src="lagu.mp3" loop></audio>
+
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.min.js'></script>
@@ -190,20 +191,31 @@
     
 
 <script>
-  const startButton = document.getElementById('start-button');
-  const startScreen = document.getElementById('start-screen');
-  const mainContent = document.getElementById('main-content');
-  const backgroundMusic = document.getElementById('background-music');
+  // Tombol "Lanjutkan"
+  const startButton = document.getElementById("start-button");
+  const audio = document.getElementById("background-audio");
 
-  startButton.addEventListener('click', () => {
+  startButton.addEventListener("click", () => {
+    // Mulai lagu
+    audio.play();
+    
     // Sembunyikan layar awal
-    startScreen.style.display = 'none';
-    // Tampilkan konten utama
-    mainContent.style.display = 'block';
-    // Mulai memutar musik
-    backgroundMusic.play();
+    document.getElementById("start-screen").style.display = "none";
+
+    // Tampilkan konten utama (jika ada)
+    // document.getElementById("main-content").style.display = "block"; 
+  });
+
+  // Periksa jika lagu tidak berjalan
+  audio.addEventListener("play", () => {
+    console.log("Audio is playing");
+  });
+
+  audio.addEventListener("error", (e) => {
+    console.error("Error playing audio", e);
   });
 </script>
+
 
 </body>
 </html>
